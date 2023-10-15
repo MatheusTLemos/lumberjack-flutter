@@ -1,5 +1,5 @@
 name: flutter_boilerplate
-description: A Flutter boilerplate for future projects.
+description: A Lumberjack for future projects.
 publish_to: 'none' 
 version: 1.0.0+1
 environment:
@@ -12,6 +12,9 @@ dependencies:
     sdk: flutter
   intl: ^0.18.1
   go_router: ^10.2.0
+  shared_preferences: ^2.2.2
+  collection: ^1.17.2
+  get_it: ^7.6.4
 dev_dependencies:
   flutter_test:
     sdk: flutter

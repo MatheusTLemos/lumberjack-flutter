@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class Appbar extends StatelessWidget implements PreferredSizeWidget {
-  const Appbar({
+class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppbar({
     super.key,
   });
 
@@ -11,11 +11,11 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(
         AppLocalizations.of(context)!.appTitle,
-        style: const TextStyle(
-          color: Colors.white,
-        ),
+        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              color: Colors.white,
+            ),
       ),
-      backgroundColor: const Color.fromRGBO(115, 147, 179, 1),
+      backgroundColor: Theme.of(context).colorScheme.primary,
     );
   }
 
