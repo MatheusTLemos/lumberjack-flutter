@@ -1,4 +1,8 @@
 {
     "appTitle": "Lumberjack",
-    "helloWorld": "Olá, mundo!"
+    "cancel": "Cancelar",
+    "name": "Nome",
+    "save": "Salvar",
+    "score": "Pontuação",
+    "timeToComplete": "Tempo para completar"
 }

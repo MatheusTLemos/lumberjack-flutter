@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/models/game.dart';
-import 'package:flutter_boilerplate/shared/constants/constants.dart';
+import 'package:lumberjack/models/game.dart';
+import 'package:lumberjack/shared/constants/constants.dart';
 import 'package:intl/intl.dart';
 
 class GameListViewItem extends StatelessWidget {

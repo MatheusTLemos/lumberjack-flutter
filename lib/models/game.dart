@@ -11,6 +11,8 @@ class Game {
   final double estimatedCompletionTime;
   final DateTime addedAt;
 
+  double get value => score * 100 / estimatedCompletionTime;
+
   Game.fromMap(Map map)
       : name = map['name'],
         score = map['score'],

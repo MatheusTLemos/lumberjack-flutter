@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:flutter_boilerplate/models/game.dart';
+import 'package:lumberjack/models/game.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const String kGamesKey = 'GAMES';

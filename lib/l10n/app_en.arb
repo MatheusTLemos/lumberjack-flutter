@@ -1,4 +1,8 @@
 {
     "appTitle": "Lumberjack",
-    "helloWorld": "Hello world!"
+    "cancel": "Cancel",
+    "name": "Name",
+    "save": "Save",
+    "score": "Score",
+    "timeToComplete": "Time to complete"
 }

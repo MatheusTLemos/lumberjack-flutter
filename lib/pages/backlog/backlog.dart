@@ -1,9 +1,11 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/models/game.dart';
-import 'package:flutter_boilerplate/pages/backlog/widgets/add_game_fab.dart';
-import 'package:flutter_boilerplate/pages/backlog/widgets/games_list_view.dart';
-import 'package:flutter_boilerplate/services/game_service.dart';
-import 'package:flutter_boilerplate/shared/widgets/widgets.dart';
+import 'package:lumberjack/models/game.dart';
+import 'package:lumberjack/pages/backlog/widgets/add_game_fab.dart';
+import 'package:lumberjack/pages/backlog/widgets/add_game_modal.dart';
+import 'package:lumberjack/pages/backlog/widgets/games_list_view.dart';
+import 'package:lumberjack/services/game_service.dart';
+import 'package:lumberjack/shared/widgets/widgets.dart';
 import 'package:get_it/get_it.dart';
 
 class Backlog extends StatefulWidget {
@@ -17,13 +19,27 @@ class _BacklogState extends State<Backlog> {
   late List<Game> gamesList = [];
   late bool isLoading = true;
 
+  Future<void> _getAllGames() async {
+    setState(() {
+      isLoading = true;
+    });
+    GetIt.I<GameService>().getAllGames().then(
+      (games) {
+        setState(
+          () {
+            games.sort((a, b) => a.value.compareTo(b.value));
+            gamesList = games.reversed.toList();
+            isLoading = false;
+          },
+        );
+      },
+    );
+  }
+
   @override
   void initState() {
-    GetIt.I<GameService>().getAllGames().then((value) {
-      gamesList = value;
-      isLoading = false;
-    });
     super.initState();
+    _getAllGames();
   }
 
   @override
@@ -35,20 +51,14 @@ class _BacklogState extends State<Backlog> {
         isLoading: isLoading,
       ),
       floatingActionButton: AddGameFab(
-        onPress: () {
-          GetIt.I<GameService>()
-              .addGame(
-            Game(
-              name: 'Game',
-              score: 10,
-              addedAt: DateTime.now(),
-              estimatedCompletionTime: 100,
-            ),
-          )
-              .then((addedGame) {
-            gamesList.add(addedGame);
-            setState(() {});
-          });
+        onPress: () async {
+          final added = await showDialog(
+            context: context,
+            builder: (_) => const AddGameModal(),
+          );
+          if (added != null && added) {
+            await _getAllGames();
+          }
         },
       ),
     );

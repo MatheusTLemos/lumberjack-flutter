@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/app/router.dart';
-import 'package:flutter_boilerplate/services/game_service.dart';
+import 'package:lumberjack/app/router.dart';
+import 'package:lumberjack/services/game_service.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get_it/get_it.dart';

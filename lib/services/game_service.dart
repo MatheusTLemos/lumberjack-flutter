@@ -1,5 +1,5 @@
-import 'package:flutter_boilerplate/models/game.dart';
-import 'package:flutter_boilerplate/repositories/games_repository.dart';
+import 'package:lumberjack/models/game.dart';
+import 'package:lumberjack/repositories/games_repository.dart';
 import 'package:collection/collection.dart';
 
 class GameService {
