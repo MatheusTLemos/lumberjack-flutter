@@ -1,6 +1,8 @@
 {
     "appTitle": "Lumberjack",
     "cancel": "Cancelar",
+    "loading": "Carregando...",
+    "loadingIconDescription": "Ícone de carregamento exibindo um personagem do jogo Space Invaders",
     "name": "Nome",
     "save": "Salvar",
     "score": "Pontuação",

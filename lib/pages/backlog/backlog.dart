@@ -4,8 +4,10 @@ import 'package:lumberjack/pages/backlog/widgets/add_game_fab.dart';
 import 'package:lumberjack/pages/backlog/widgets/add_game_modal.dart';
 import 'package:lumberjack/pages/backlog/widgets/games_list_view.dart';
 import 'package:lumberjack/services/game_service.dart';
-import 'package:lumberjack/shared/widgets/widgets.dart';
+import 'package:lumberjack/shared/widgets.dart';
 import 'package:get_it/get_it.dart';
+import 'package:lumberjack/states/loading_state.dart';
+import 'package:provider/provider.dart';
 
 class Backlog extends StatefulWidget {
   const Backlog({super.key});
@@ -15,20 +17,15 @@ class Backlog extends StatefulWidget {
 }
 
 class _BacklogState extends State<Backlog> {
-  late List<Game> gamesList = [];
-  late bool isLoading = true;
+  late List<Game> _gamesList = [];
 
   Future<void> _getAllGames() async {
-    setState(() {
-      isLoading = true;
-    });
     GetIt.I<GameService>().getAllGames().then(
       (games) {
         setState(
           () {
             games.sort((a, b) => a.value.compareTo(b.value));
-            gamesList = games.reversed.toList();
-            isLoading = false;
+            _gamesList = games.reversed.toList();
           },
         );
       },
@@ -43,23 +40,30 @@ class _BacklogState extends State<Backlog> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppbar(),
-      body: GamesListView(
-        gamesList: gamesList,
-        isLoading: isLoading,
-      ),
-      floatingActionButton: AddGameFab(
-        onPress: () async {
-          final added = await showDialog(
-            context: context,
-            builder: (_) => const AddGameModal(),
-          );
-          if (added != null && added) {
-            await _getAllGames();
-          }
-        },
-      ),
-    );
+    return Consumer<LoadingState>(builder: (context, loadingState, _) {
+      return Stack(children: [
+        Scaffold(
+          appBar: const CustomAppbar(),
+          body: GamesListView(
+            gamesList: _gamesList,
+            isLoading: loadingState.getIsLoading(),
+          ),
+          floatingActionButton: AddGameFab(
+            onPress: () async {
+              final added = await showDialog(
+                context: context,
+                builder: (_) => const AddGameModal(),
+              );
+              if (added != null && added) {
+                loadingState.setIsLoading(true);
+                await _getAllGames();
+                loadingState.setIsLoading(false);
+              }
+            },
+          ),
+        ),
+        if (loadingState.getIsLoading()) const LoadingOverlay(),
+      ]);
+    });
   }
 }

@@ -1,6 +1,8 @@
 {
     "appTitle": "Lumberjack",
     "cancel": "Cancel",
+    "loading": "Loading...",
+    "loadingIconDescription": "Loading icon depicting a character from the game space invaders",
     "name": "Name",
     "save": "Save",
     "score": "Score",
