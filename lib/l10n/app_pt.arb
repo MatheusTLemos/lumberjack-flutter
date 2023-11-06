@@ -1,9 +1,12 @@
 {
     "appTitle": "Lumberjack",
     "cancel": "Cancelar",
+    "invalidScoreErrorMessage": "Deve ser um número entre 0 e 10",
+    "invalidTimeToCompleteErrorMessage": "Deve ser um número positivo",
     "loading": "Carregando...",
     "loadingIconDescription": "Ícone de carregamento exibindo um personagem do jogo Space Invaders",
     "name": "Nome",
+    "required": "Obrigatório",
     "save": "Salvar",
     "score": "Pontuação",
     "timeToComplete": "Tempo para completar"

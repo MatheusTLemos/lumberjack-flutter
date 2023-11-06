@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lumberjack/models/game.dart';
-import 'package:lumberjack/pages/backlog/widgets/game_list_view_item.dart';
+import 'package:lumberjack/pages/backlog/widgets/games_list/game_list_view_item.dart';
 import 'package:lumberjack/shared/constants.dart';
 
 class GamesListView extends StatelessWidget {

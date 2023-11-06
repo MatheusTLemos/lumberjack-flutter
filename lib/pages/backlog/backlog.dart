@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lumberjack/models/game.dart';
 import 'package:lumberjack/pages/backlog/widgets/add_game_fab.dart';
-import 'package:lumberjack/pages/backlog/widgets/add_game_modal.dart';
-import 'package:lumberjack/pages/backlog/widgets/games_list_view.dart';
+import 'package:lumberjack/pages/backlog/widgets/add_game_modal/add_game_modal.dart';
+import 'package:lumberjack/pages/backlog/widgets/games_list/games_list_view.dart';
 import 'package:lumberjack/services/game_service.dart';
 import 'package:lumberjack/shared/widgets.dart';
 import 'package:get_it/get_it.dart';
